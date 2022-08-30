@@ -1,5 +1,5 @@
 import { useState } from "react";
-import './EightBall.css'
+import "./EightBall.css";
 
 const answersDefault = [
   { msg: "It is certain.", color: "green" },
@@ -42,21 +42,24 @@ function EightBall({ answers = answersDefault }) {
   });
 
   function getAnswer() {
-    const randomIdx = Math.floor(Math.random() * answers.length);
-    setAnswer(answers[randomIdx]);
-  }
-
-//   const eightBallStyle = {
-//     color: answer.color,
-//     backgroundColor: otherColor,
-//   };
-
+      const randomIdx = Math.floor(Math.random() * answers.length);
+      setAnswer(answers[randomIdx]);
+    }
 
   return (
-    <div className="EightBall postion-relative" onClick={getAnswer} style={{backgroundColor: answer.color}}>
-      <p className="position-absolute top-50 start-50 translate-middle">{answer.msg}</p>
+    <div
+      className="EightBall postion-relative"
+      onClick={getAnswer}
+      style={{ backgroundColor: answer.color }}
+    >
+      <p className="position-absolute top-50 start-50 translate-middle">
+        {answer.msg}
+      </p>
     </div>
   );
 }
+
+//TODO: move randomness to helper function to ameliorate testability:
+//pass in the whole array of answers and return the random message 
 
 export default EightBall;
